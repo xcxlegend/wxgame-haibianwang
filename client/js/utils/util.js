@@ -14,13 +14,23 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// var showLoading = text => wx.showLoading({
+//   title: text,
+//   mask: true
+// })
+
+// var hideLoading = () => 
 
 // 显示繁忙提示
 var showBusy = text => wx.showToast({
     title: text,
     icon: 'loading',
-    duration: 10000
+    duration: 3000
 })
+
+var closeShow = function(){ 
+  wx.hideToast({})
+}
 
 // 显示成功提示
 var showSuccess = text => wx.showToast({
@@ -39,4 +49,4 @@ var showModel = (title, content) => {
     })
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+module.exports = { formatTime, showBusy, showSuccess, showModel, closeShow }

@@ -6,23 +6,29 @@ wx.onMessage(data => {
   switch (data.type) {
     case "rank": 
       console.log("rank:")
-      wx.getFriendCloudStorage({
-        keyList: ["score"],
-        success: (e) => {
-          console.log(e)
-          showRank(e)
-        }
-      })
+      getRank()
+      break
     case "set_score":
       updateScore(data.score)
-    break
+      break
   }
 })
+
+function getRank() {
+  wx.getFriendCloudStorage({
+    keyList: ["score"],
+    success: (e) => {
+      console.log(e)
+      showRank(e)
+    }
+  })
+}
 
 function showRank(e) {
   let rank = []
   let sharedCanvas = wx.getSharedCanvas()
   let ctx = sharedCanvas.getContext('2d')
+  ctx.clearRect(0, 0, sharedCanvas.width, sharedCanvas.height)
 
   ctx.fillStyle = "#ffffff"
   ctx.font = "12px Arial"
@@ -63,6 +69,7 @@ function getScore(call) {
 }
 
 function updateScore(score) {
+  let that = this
   getScore((e) => {
     // console.log(e)
     let old = 0
@@ -74,7 +81,7 @@ function updateScore(score) {
       })
     }
 
-    // console.log("upadte score:", old, score)
+    console.log("upadte score:", old, score)
     if (score <= old) {
        return
     }
@@ -85,6 +92,7 @@ function updateScore(score) {
       KVDataList: kvdata,
       success: (e) => {
         // console.log("setUserCloudStorage", e)
+        getRank()
       },
       fail: (msg) => { console.log('fail', msg) }
     })
