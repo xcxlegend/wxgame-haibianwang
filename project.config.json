@@ -12,7 +12,7 @@
 		"newFeature": true
 	},
 	"compileType": "game",
-	"libVersion": "game",
+	"libVersion": "2.0.8",
 	"appid": "wx09b097c77bd692fa",
 	"projectname": "%E5%97%A8%E6%89%81%E7%8E%8B",
 	"isGameTourist": true,
