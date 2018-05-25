@@ -53387,6 +53387,7 @@ var MenuUI=(function(_super){
 		    this.bg=null;
 		    this.btn_play=null;
 		    this.btn_rank=null;
+		    this.btn_share=null;
 
 			MenuUI.__super.call(this);
 		}
@@ -53400,7 +53401,7 @@ var MenuUI=(function(_super){
 
 		}
 
-		MenuUI.uiView={"type":"View","props":{},"child":[{"type":"Image","props":{"y":0,"x":0,"var":"bg","top":0,"left":0}},{"type":"Image","props":{"var":"btn_play","skin":"icons/anniu.png","scaleY":0.3,"scaleX":0.3,"centerY":100,"centerX":0},"child":[{"type":"Image","props":{"x":100,"top":88,"skin":"icons/play.png","left":100}},{"type":"Label","props":{"top":94,"text":"开始游戏","left":200,"fontSize":60,"color":"#333333"}}]},{"type":"Image","props":{"top":80,"skin":"icons/logo.png","scaleY":0.3,"scaleX":0.3,"centerX":0}},{"type":"Image","props":{"var":"btn_rank","skin":"icons/paihang.png","scaleY":0.3,"scaleX":0.3,"centerX":-100,"bottom":100}}]};
+		MenuUI.uiView={"type":"View","props":{},"child":[{"type":"Image","props":{"y":0,"x":0,"var":"bg","top":0,"left":0}},{"type":"Image","props":{"var":"btn_play","skin":"icons/anniu.png","scaleY":0.3,"scaleX":0.3,"centerY":100,"centerX":0},"child":[{"type":"Image","props":{"x":100,"top":88,"skin":"icons/play.png","left":100}},{"type":"Label","props":{"top":94,"text":"开始游戏","left":200,"fontSize":60,"color":"#333333"}}]},{"type":"Image","props":{"top":80,"skin":"icons/logo.png","scaleY":0.3,"scaleX":0.3,"centerX":0}},{"type":"Image","props":{"var":"btn_rank","skin":"icons/paihang.png","scaleY":0.3,"scaleX":0.3,"centerX":-100,"bottom":100}},{"type":"Button","props":{"var":"btn_share","skin":"comp/button.png","sizeGrid":"4,4,4,4","label":"分享","centerX":100,"bottom":108}}]};
 		return MenuUI;
 	})(View);
 var PlayUI=(function(_super){
@@ -53490,7 +53491,7 @@ var __class=Laya.class;
 				try {
 					var rankTexture = new Laya.Texture(Laya.Browser.window.sharedCanvas);
 					console.log(rankTexture, rankTexture.width, rankTexture.height)
-					this.sp_rank_panel.graphics.drawTexture(rankTexture, 24, 55, rankTexture.width, rankTexture.height);
+					this.sp_rank_panel.graphics.drawTexture(rankTexture, 24, 110, rankTexture.width, rankTexture.height);
 				} catch (error) {
 					console.log(error)
 				}
@@ -53582,6 +53583,7 @@ var Loading=(function(_super){
 
 			this.btn_play.on(laya.events.Event.CLICK, this, onBtnPlayClick)
 			this.btn_rank.on(laya.events.Event.CLICK, this, onBtnRankClick)
+			this.btn_share.on(laya.events.Event.CLICK, this, onBtnShareClick)
 
 
 			function onBtnPlayClick() {
@@ -53590,6 +53592,15 @@ var Loading=(function(_super){
 
 			function onBtnRankClick() {
 				loadUI("rank")
+			}
+
+			function onBtnShareClick() {
+				if (IN_WX) {
+					wx.shareAppMessage({
+						title: "来打我吧",
+						query: "avatar=" + window._globalData.userInfo.userInfo.avatarUrl
+					})
+				}
 			}
 
 
@@ -53682,6 +53693,10 @@ var Loading=(function(_super){
 
 			this.width = window.innerWidth
 			this.height = window.innerHeight
+
+			if (window._globalData.hitAvatar != null){
+				this.avatar.skin = window._globalData.hitAvatar
+			}
 			 
 			// function
 
@@ -54175,16 +54190,41 @@ function onLoaded()
 			loaded: false,
 			heart: 0,
 		},
+		hitAvatar: null,
 		openDataContext: WX.getOpenDataContext()
 	};
+
+	if (IN_WX){
+		let options = wx.getLaunchOptionsSync()
+		if ("avatar" in options.query){
+			window._globalData.hitAvatar = options.query.avatar
+			wx.downloadFile({
+				url: options.query.avatar,
+				success: (res) => {
+					window._globalData.hitAvatar = res.tempFilePath
+					startLoading()
+				}
+			})
+		}else{
+			startLoading()
+		}
+	}else{
+		startLoading()
+	}
+
+	
+	
+
+	// WX.login(
+	// 	() => {
+	// 		WX.openTunnel()
+	// 	}
+	// )
+	
+}
+
+function startLoading() {
 	WX.Init(window._globalData)
 	initUIs()
 	loadUI(UIKEY_LOADING)
-
-	WX.login(
-		() => {
-			WX.openTunnel()
-		}
-	)
-	
 }

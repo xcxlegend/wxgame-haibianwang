@@ -108,16 +108,41 @@ function onLoaded()
 			loaded: false,
 			heart: 0,
 		},
+		hitAvatar: null,
 		openDataContext: WX.getOpenDataContext()
 	};
+
+	if (IN_WX){
+		let options = wx.getLaunchOptionsSync()
+		if ("avatar" in options.query){
+			window._globalData.hitAvatar = options.query.avatar
+			wx.downloadFile({
+				url: options.query.avatar,
+				success: (res) => {
+					window._globalData.hitAvatar = res.tempFilePath
+					startLoading()
+				}
+			})
+		}else{
+			startLoading()
+		}
+	}else{
+		startLoading()
+	}
+
+	
+	
+
+	// WX.login(
+	// 	() => {
+	// 		WX.openTunnel()
+	// 	}
+	// )
+	
+}
+
+function startLoading() {
 	WX.Init(window._globalData)
 	initUIs()
 	loadUI(UIKEY_LOADING)
-
-	WX.login(
-		() => {
-			WX.openTunnel()
-		}
-	)
-	
 }

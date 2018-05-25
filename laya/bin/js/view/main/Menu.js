@@ -12,6 +12,7 @@
 
 			this.btn_play.on(laya.events.Event.CLICK, this, onBtnPlayClick)
 			this.btn_rank.on(laya.events.Event.CLICK, this, onBtnRankClick)
+			this.btn_share.on(laya.events.Event.CLICK, this, onBtnShareClick)
 
 
 			function onBtnPlayClick() {
@@ -20,6 +21,15 @@
 
 			function onBtnRankClick() {
 				loadUI("rank")
+			}
+
+			function onBtnShareClick() {
+				if (IN_WX) {
+					wx.shareAppMessage({
+						title: "来打我吧",
+						query: "avatar=" + window._globalData.userInfo.userInfo.avatarUrl
+					})
+				}
 			}
 
 

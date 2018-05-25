@@ -28,6 +28,7 @@ var MenuUI=(function(_super){
 		    this.bg=null;
 		    this.btn_play=null;
 		    this.btn_rank=null;
+		    this.btn_share=null;
 
 			MenuUI.__super.call(this);
 		}
@@ -41,7 +42,7 @@ var MenuUI=(function(_super){
 
 		}
 
-		MenuUI.uiView={"type":"View","props":{},"child":[{"type":"Image","props":{"y":0,"x":0,"var":"bg","top":0,"left":0}},{"type":"Image","props":{"var":"btn_play","skin":"icons/anniu.png","scaleY":0.3,"scaleX":0.3,"centerY":100,"centerX":0},"child":[{"type":"Image","props":{"x":100,"top":88,"skin":"icons/play.png","left":100}},{"type":"Label","props":{"top":94,"text":"开始游戏","left":200,"fontSize":60,"color":"#333333"}}]},{"type":"Image","props":{"top":80,"skin":"icons/logo.png","scaleY":0.3,"scaleX":0.3,"centerX":0}},{"type":"Image","props":{"var":"btn_rank","skin":"icons/paihang.png","scaleY":0.3,"scaleX":0.3,"centerX":-100,"bottom":100}}]};
+		MenuUI.uiView={"type":"View","props":{},"child":[{"type":"Image","props":{"y":0,"x":0,"var":"bg","top":0,"left":0}},{"type":"Image","props":{"var":"btn_play","skin":"icons/anniu.png","scaleY":0.3,"scaleX":0.3,"centerY":100,"centerX":0},"child":[{"type":"Image","props":{"x":100,"top":88,"skin":"icons/play.png","left":100}},{"type":"Label","props":{"top":94,"text":"开始游戏","left":200,"fontSize":60,"color":"#333333"}}]},{"type":"Image","props":{"top":80,"skin":"icons/logo.png","scaleY":0.3,"scaleX":0.3,"centerX":0}},{"type":"Image","props":{"var":"btn_rank","skin":"icons/paihang.png","scaleY":0.3,"scaleX":0.3,"centerX":-100,"bottom":100}},{"type":"Button","props":{"var":"btn_share","skin":"comp/button.png","sizeGrid":"4,4,4,4","label":"分享","centerX":100,"bottom":108}}]};
 		return MenuUI;
 	})(View);
 var PlayUI=(function(_super){

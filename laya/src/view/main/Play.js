@@ -71,6 +71,10 @@
 
 			this.width = window.innerWidth
 			this.height = window.innerHeight
+
+			if (window._globalData.hitAvatar != null){
+				this.avatar.skin = window._globalData.hitAvatar
+			}
 			 
 			// function
 

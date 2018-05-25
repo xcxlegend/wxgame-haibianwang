@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":10,
+    "selecteID":15,
     "props":{"var":"view_window","sceneColor":"#ffffff"},
     "nodeParent":-1,
     "label":"View(view_window)",
@@ -88,6 +88,19 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":10,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "props":{"var":"btn_share","skin":"comp/button.png","sizeGrid":"4,4,4,4","label":"分享","centerX":100,"bottom":108},
+            "nodeParent":1,
+            "label":"Button(btn_share)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":15,
             "child":[
                 ]
         }],

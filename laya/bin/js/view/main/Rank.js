@@ -33,7 +33,7 @@ var __class=Laya.class;
 				try {
 					var rankTexture = new Laya.Texture(Laya.Browser.window.sharedCanvas);
 					console.log(rankTexture, rankTexture.width, rankTexture.height)
-					this.sp_rank_panel.graphics.drawTexture(rankTexture, 24, 55, rankTexture.width, rankTexture.height);
+					this.sp_rank_panel.graphics.drawTexture(rankTexture, 24, 110, rankTexture.width, rankTexture.height);
 				} catch (error) {
 					console.log(error)
 				}
