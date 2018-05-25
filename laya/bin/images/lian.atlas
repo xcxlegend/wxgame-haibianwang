@@ -1,0 +1,77 @@
+{
+    "frames": {
+        "lian16(w160h163).png": {
+            "frame": {
+                "h": 98,
+                "idx": 0,
+                "w": 96,
+                "x": 99,
+                "y": 154
+            },
+            "sourceSize": {
+                "h": 98,
+                "w": 96
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "lian2(w208h243).png": {
+            "frame": {
+                "h": 153,
+                "idx": 0,
+                "w": 131,
+                "x": 138,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 153,
+                "w": 131
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "lian6(w172h152).png": {
+            "frame": {
+                "h": 135,
+                "idx": 0,
+                "w": 98,
+                "x": 0,
+                "y": 148
+            },
+            "sourceSize": {
+                "h": 135,
+                "w": 98
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "lian7(w180h228).png": {
+            "frame": {
+                "h": 147,
+                "idx": 0,
+                "w": 137,
+                "x": 0,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 147,
+                "w": 137
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    },
+    "meta": {
+        "image": "lian.png",
+        "prefix": "lian/",
+        "scale": "0.3"
+    }
+}

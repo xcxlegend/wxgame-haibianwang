@@ -1,0 +1,22 @@
+<res>
+   <item name="images/menu.jpg" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0.3"/>
+   <item name="images/shang" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0.3"/>
+   <item name="images/biaoqing" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0.3"/>
+   <item name="images/lian/lian1(w230h191).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian10(w320h393).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian11(w251h147).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian12(w245h145).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian13(w232h175).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian14(w430h363).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian3(w247h281).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian4(w232h319).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian5(w394h199).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian8(w348h328).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian9(w374h154).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian15(w292h186).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian17(w137h205).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/lian/lian18(w193h216).png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="icons/anniu.png" type="Image" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="icons" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+</res>

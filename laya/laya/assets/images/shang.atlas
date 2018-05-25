@@ -1,0 +1,128 @@
+{
+    "frames": {
+        "shang1.png": {
+            "frame": {
+                "h": 72,
+                "idx": 0,
+                "w": 57,
+                "x": 0,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 90,
+                "w": 90
+            },
+            "spriteSourceSize": {
+                "x": 17,
+                "y": 16
+            }
+        },
+        "shang2.png": {
+            "frame": {
+                "h": 66,
+                "idx": 0,
+                "w": 58,
+                "x": 58,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 90,
+                "w": 90
+            },
+            "spriteSourceSize": {
+                "x": 17,
+                "y": 18
+            }
+        },
+        "shang3.png": {
+            "frame": {
+                "h": 60,
+                "idx": 0,
+                "w": 86,
+                "x": 58,
+                "y": 67
+            },
+            "sourceSize": {
+                "h": 90,
+                "w": 90
+            },
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 22
+            }
+        },
+        "shang4.png": {
+            "frame": {
+                "h": 49,
+                "idx": 0,
+                "w": 52,
+                "x": 0,
+                "y": 73
+            },
+            "sourceSize": {
+                "h": 90,
+                "w": 90
+            },
+            "spriteSourceSize": {
+                "x": 23,
+                "y": 26
+            }
+        },
+        "shang5.png": {
+            "frame": {
+                "h": 52,
+                "idx": 0,
+                "w": 53,
+                "x": 117,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 90,
+                "w": 90
+            },
+            "spriteSourceSize": {
+                "x": 19,
+                "y": 30
+            }
+        },
+        "shang6.png": {
+            "frame": {
+                "h": 54,
+                "idx": 0,
+                "w": 50,
+                "x": 171,
+                "y": 0
+            },
+            "sourceSize": {
+                "h": 90,
+                "w": 90
+            },
+            "spriteSourceSize": {
+                "x": 21,
+                "y": 20
+            }
+        },
+        "shang7.png": {
+            "frame": {
+                "h": 50,
+                "idx": 0,
+                "w": 60,
+                "x": 145,
+                "y": 55
+            },
+            "sourceSize": {
+                "h": 90,
+                "w": 90
+            },
+            "spriteSourceSize": {
+                "x": 15,
+                "y": 20
+            }
+        }
+    },
+    "meta": {
+        "image": "shang.png",
+        "prefix": "shang/",
+        "scale": "0.3"
+    }
+}
