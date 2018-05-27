@@ -14364,7 +14364,7 @@ var Texture=(function(_super){
 		/**@private */
 		this.scaleRate=1;
 		Texture.__super.call(this);
-    if (bitmap && bitmap._addReference){
+		if (bitmap){
 			bitmap._addReference();
 		}
 		this.setTo(bitmap,uv);
@@ -53694,9 +53694,16 @@ var Loading=(function(_super){
 			this.width = window.innerWidth
 			this.height = window.innerHeight
 
+			this.loadAvatar = false
+
 			if (window._globalData.hitAvatar != null){
 				this.avatar.skin = window._globalData.hitAvatar
+				this.avatar.alpha = 0.3
+				this.avatar.scaleX = 300 / 132
+				this.avatar.scaleY = 300 / 132
+				this.loadAvatar = true
 			}
+
 			 
 			// function
 
@@ -53735,18 +53742,27 @@ var Loading=(function(_super){
 				let x = SHENTI[shentiID][1]
 				let y = SHENTI[shentiID][2]
 
-				this.avatar.top = y - this.avatar.height/2
-				this.avatar.left = x - this.avatar.width/2
-
 				let faceID = rnd(0, FACE.length)
 				this.face.skin = FACE[faceID]
-				this.face.top = this.avatar.top
-				this.face.left = this.avatar.left
+				this.face.top = y - this.face.height/2
+				this.face.left = x - this.face.width/2
+
+				if (this.loadAvatar){
+					this.avatar.width = 	this.face.width * 0.8
+					this.avatar.height = 	this.face.height * 0.8
+					this.avatar.top = this.face.top + 30
+					this.avatar.left = this.face.left + 30
+				}else{
+					this.avatar.width = 	this.face.width
+					this.avatar.height = 	this.face.height
+					this.avatar.top = this.face.top
+					this.avatar.left = this.face.left
+				}
 				
 				let hitID = rnd(0, HITTED.length)
 				this.hitted.skin = HITTED[hitID]
-				this.hitted.top = this.avatar.top
-				this.hitted.left = this.avatar.left
+				this.hitted.top = this.face.top
+				this.hitted.left = this.face.left
 				
 				if (this.score > 0){
 					let talkID = rnd(0, TALK_TEXT.length)
@@ -53828,6 +53844,7 @@ var Loading=(function(_super){
 				this.face.visible = false
 				this.hitted.visible = true
 				this.score++
+				this.duration = -1
 				setTimeout(() => {
 					this.enemy.visible = false
 					this.genEnemy()
