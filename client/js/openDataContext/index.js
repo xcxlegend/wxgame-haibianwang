@@ -1,17 +1,33 @@
 let sharedCanvas = wx.getSharedCanvas()
 let ctx = sharedCanvas.getContext('2d')
+let nickname = ""
 
 function drawRankList(data) {
 
+  ctx.clearRect(0, 0, sharedCanvas.width, sharedCanvas.height)
+  ctx.fillStyle = "#333333";
+  ctx.fillRect(0, 0, sharedCanvas.width - 48, sharedCanvas.height - 180);
+
+  data.sort(function(a, b){
+    return a.KVDataList[0].value > b.KVDataList[0].value
+  })
+
+  console.log(nickname)
+  let myRank = 0
+
   data.forEach((item, index) => {
-    console.log(item)
-    ctx.clearRect(0, 0, sharedCanvas.width, sharedCanvas.height)
-    ctx.fillStyle = "#333333";
-    ctx.fillRect(0, 0, sharedCanvas.width - 48, sharedCanvas.height - 180);
+    // console.log(item)
+   
+    if (nickname == item.nickname) {
+      myRank = index + 1
+      console.log("my rank:", myRank)
+    }
+
+    if (index < 5){
     // ctx.drawImage(item.avatarUrl, 0, 0, 200, 400);  
     var image1 = wx.createImage()  
     image1.src = item.avatarUrl  
-    console.log(image1)
+    // console.log(image1)
     
     let height = 20 + index * 60
     let score = item.KVDataList[0].value;
@@ -49,6 +65,7 @@ function drawRankList(data) {
     ctx.font = "14px Georgia";
     ctx.fillStyle = "#ffffff"
     ctx.fillText(score, 230, height + 20);
+    }
 
     // ctx.drawImage(image1, 200, 200, 120, 120)
     // var image = new Laya.Image();
@@ -76,6 +93,7 @@ wx.onMessage((data) => {
   switch (data.type) {
     case "rank":
       console.log("rank:")
+      nickname = data.nickname
       getRank()
       break
     case "set_score":
@@ -130,7 +148,7 @@ function getRank() {
   wx.getFriendCloudStorage({
     keyList: ["score"],
     success: (e) => {
-      console.log(e)
+      // console.log(e)
       let data = e.data
       drawRankList(data)
     },

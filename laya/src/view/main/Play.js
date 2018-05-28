@@ -176,6 +176,7 @@
 			}
 
 			this.alive = () => {
+				 WX.sendMessage("alive", {})
 				this.heart--
 				this.over = false
 				this.dlg_dead.visible = false

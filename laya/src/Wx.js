@@ -3,28 +3,6 @@ var WX = {
     tunnelUrl: "",
 }
 
-var host = 'https://efbuv06s.qcloud.la';
-
-var config = {
-
-    // 下面的地址配合云端 Demo 工作
-    service: {
-        host,
-
-        // 登录地址，用于建立会话
-        loginUrl: `${host}/weapp/login`,
-
-        // 测试的请求地址，用于测试会话
-        requestUrl: `${host}/weapp/user`,
-
-        // 测试的信道服务地址
-        tunnelUrl: `${host}/weapp/tunnel`,
-
-        // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`
-    }
-};
-
 WX.Init = (_globalData) => {
     WX._globalData = _globalData
     try {
@@ -62,6 +40,7 @@ WX.getRank = () => {
         // if (openDataContext == null) return
         WX._globalData.openDataContext.postMessage({
             type: 'rank',
+            nickname: window._globalData.userInfo.userInfo.nickName,
         })
     } catch (error) {
         return
@@ -116,6 +95,13 @@ WX.openTunnel = () => {
             console.log('用户上线,', msg.who)
             if (msg.who.nickName != WX._globalData.userInfo.nickName){
             // util.showSuccess(msg.who.nickName + '上线')
+            }
+            WX._globalData.userData.loaded = true
+              
+            if (msg.who.rank == undefined || msg.who.rank == null ||  msg.who.rank.latest_time == "0"){
+              WX._globalData.userData.heart = 3
+            }else{
+              WX._globalData.userData.heart = msg.who.rank.heart
             }
         }
         else if (msg.offline){

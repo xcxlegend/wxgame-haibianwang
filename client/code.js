@@ -14364,7 +14364,7 @@ var Texture=(function(_super){
 		/**@private */
 		this.scaleRate=1;
 		Texture.__super.call(this);
-		if (bitmap){
+    if (bitmap && bitmap._addReference){
 			bitmap._addReference();
 		}
 		this.setTo(bitmap,uv);
@@ -53487,10 +53487,8 @@ var __class=Laya.class;
 			}
 
 			function loop() {
-				console.log("loop")
 				try {
 					var rankTexture = new Laya.Texture(Laya.Browser.window.sharedCanvas);
-					console.log(rankTexture, rankTexture.width, rankTexture.height)
 					this.sp_rank_panel.graphics.drawTexture(rankTexture, 24, 110, rankTexture.width, rankTexture.height);
 				} catch (error) {
 					console.log(error)
@@ -53798,6 +53796,7 @@ var Loading=(function(_super){
 			}
 
 			this.alive = () => {
+        WX.sendMessage("alive", {})
 				this.heart--
 				this.over = false
 				this.dlg_dead.visible = false
@@ -53938,6 +53937,7 @@ WX.getRank = () => {
         // if (openDataContext == null) return
         WX._globalData.openDataContext.postMessage({
             type: 'rank',
+            nickname: window._globalData.userInfo.userInfo.nickName,
         })
     } catch (error) {
         return
@@ -53992,6 +53992,14 @@ WX.openTunnel = () => {
             console.log('用户上线,', msg.who)
             if (msg.who.nickName != WX._globalData.userInfo.nickName){
             // util.showSuccess(msg.who.nickName + '上线')
+            }
+
+            WX._globalData.userData.loaded = true
+            
+            if (msg.who.rank == undefined || msg.who.rank == null ||  msg.who.rank.latest_time == "0"){
+              WX._globalData.userData.heart = 3
+            }else{
+              WX._globalData.userData.heart = msg.who.rank.heart
             }
         }
         else if (msg.offline){
